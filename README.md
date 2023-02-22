@@ -25,7 +25,7 @@ aws --region=us-east-1 --endpoint=http://localhost:9324 sqs send-message \
 aws sqs receive-message --queue-url http://localhost:9324/000000000000/test
 ```
 
-# localstack
+# docker network for api-1 services
 
 ```
 docker network create api-1-network
