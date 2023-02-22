@@ -1,0 +1,55 @@
+version: "3.2"
+services:
+  db:
+    image: postgres
+    container_name: golang_api_1_postgres
+    volumes:
+      - ./container_db:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: password
+      PGDATA: /data/postgres
+    # volumes:
+    #    - postgres:/data/postgres
+    ports:
+      - 5432:5432
+    networks:
+      - apinet
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: golang_api_1_pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: 'user@domain.com'
+      PGADMIN_DEFAULT_PASSWORD: 'SuperSecret'
+      PGADMIN_LISTEN_PORT: 80
+    volumes:
+      - pgadmin:/var/lib/pgadmin
+    ports:
+      - 80:80
+    networks:
+      - apinet
+
+  localstack:
+    image: localstack/localstack:latest
+    container_name: golang_api_1_localstack
+    environment:
+      - SERVICES=sqs,sns
+      - AWS_DEFAULT_REGION=eu-central-1
+      - EDGE_PORT=4566
+    ports:
+      - '4566-4597:4566-4597'
+    volumes:
+      # - "${TMPDIR:-/tmp/localstack}:/tmp/localstack"
+      - "/var/lib/localstack:/var/lib/localstack"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    networks:
+      - apinet
+
+networks:
+  apinet:
+    name: api-1-network
+    external: true
+
+volumes:
+  postgres:
+  pgadmin:
