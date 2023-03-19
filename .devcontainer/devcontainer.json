@@ -12,7 +12,7 @@
 
   "runArgs": [
     "--network=api-1-network",
-    "--name=api-1-infra",
+    "--name=api-1-infra-devcontainer",
     "-v", "${localWorkspaceFolder}/container_db:${containerWorkspaceFolder}/container_db"
   ]
 

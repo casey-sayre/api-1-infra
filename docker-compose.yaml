@@ -2,7 +2,7 @@ version: "3.2"
 services:
   db:
     image: postgres
-    container_name: golang_api_1_postgres
+    container_name: api_1_postgres
     volumes:
       - ./container_db:/var/lib/postgresql/data
     environment:
@@ -17,7 +17,7 @@ services:
 
   pgadmin:
     image: dpage/pgadmin4
-    container_name: golang_api_1_pgadmin
+    container_name: api_1_pgadmin
     environment:
       PGADMIN_DEFAULT_EMAIL: 'user@domain.com'
       PGADMIN_DEFAULT_PASSWORD: 'SuperSecret'
@@ -31,7 +31,7 @@ services:
 
   localstack:
     image: localstack/localstack:latest
-    container_name: golang_api_1_localstack
+    container_name: api_1_localstack
     environment:
       - SERVICES=sqs,sns
       - AWS_DEFAULT_REGION=eu-central-1
