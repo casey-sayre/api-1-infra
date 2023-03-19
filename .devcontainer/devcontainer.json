@@ -12,7 +12,7 @@
 
   "runArgs": [
     "--network=api-1-network",
-    "--name=golang-api-1-infra-devcontainer",
+    "--name=api-1-infra",
     "-v", "${localWorkspaceFolder}/container_db:${containerWorkspaceFolder}/container_db"
   ]
 
