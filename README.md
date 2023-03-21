@@ -26,7 +26,9 @@ $ docker-compose up -d
 
 # localstack
 
-Create queue, topic, subscription so API can inform websocket server of updates
+Create queue, topic, subscription so API can inform websocket server of updates.
+
+Must run these commands from a terminal in the docker network, for example from a vs code terminal running in this dev container.
 
 ```
 $ aws configure
@@ -50,6 +52,7 @@ $ # QueueArn          arn:aws:sqs:us-east-1:000000000000:album-queue
 
 $ aws --endpoint-url=http://localstack:4566 sns list-topics
 $ aws --endpoint-url=http://localstack:4566 sqs list-queues
+$ aws --endpoint-url=http://localstack:4566 sns list-subscriptions
 
 ```
 
